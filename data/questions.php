@@ -44,7 +44,7 @@ $answers = array(
         "Pegarei o bus junto com o resto do povo.",
         "No ponto de ônibus mais uma vez, espero não errar a linha de novo.",
         "Vou de carro, mas ofereço uma carona para os colegas.",
-        "TAcho que descobri uma forma de fazer aquela senhora rodar no Firefox."
+        "Acho que descobri uma forma de fazer aquela senhora rodar no Firefox."
     ],
     
 );
@@ -70,4 +70,4 @@ $result = array(
         "title" => "Silicon Valley",
         "text" => "Você é Silicon Valley: vive a tecnologia o tempo todo e faz disso um mantra para cada situação no dia."
     ],
-)
+);

@@ -1,0 +1,80 @@
+#testForm {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.title {
+    margin: 0;
+}
+
+.questionTab {
+    display: none;
+    flex-flow: column nowrap;
+
+    margin: 2vh 2vw;
+}
+
+.answersContainer {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.answer {
+    margin: 5px 0;
+}
+
+.aswertText {
+    font-size: 16px;
+}
+
+.buttons {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.buttons button {
+    margin: 0 10px;
+}
+
+.progressBar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    width: 80vw;
+    height: 30px;
+    margin: 0 10vw;
+
+    border-radius: 10px;
+    border: 1px solid #555;
+}
+
+.progress {
+    height: 32px;
+
+    object-fit: contain;
+
+    border-radius: 10px;
+
+    background-color: #555;
+}
+
+.progress0 {
+    width: 0%;
+}
+
+.progress1 {
+    width: 25%;
+}
+
+.progress2 {
+    width: 50%;
+}
+
+.progress3 {
+    width: 75%;
+}
+
+.progress4 {
+    width: 100%;
+}
