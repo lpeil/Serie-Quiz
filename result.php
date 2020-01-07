@@ -1,21 +1,14 @@
-<? require_once('data/questions.php');
+<? require_once("includes/header.php");
 
-$sum = [
-    0 => 0,
-    1 => 0,
-    2 => 0,
-    3 => 0,
-    4 => 0
-];
+$sum = [0, 0, 0, 0, 0];
 
 for($i = 0; $i < count($_POST); $i++) {
     $sum[$_POST[$i]]++;
 }
 
 $mostSelected = array_keys($sum, max($sum));
-$qtyMostSelected = count($mostSelected);
 
-if($qtyMostSelected > 1) {
+if(count($mostSelected) > 1) {
     if(in_array($_POST[4], $mostSelected)) {
         $mostSelected = $_POST[4];
     } else {
@@ -25,7 +18,10 @@ if($qtyMostSelected > 1) {
     $mostSelected = $mostSelected[0];
 }
 
-echo '<div>
-    <h1>'.$result[$mostSelected]["title"].'</h1>
-    <h3>'.$result[$mostSelected]["text"].'</h3>
+echo '<div class="siteCard">
+    <h1 class="resultTitle">'.$result[$mostSelected]["title"].'</h1>
+    <img class="resultImage" src="'.$result[$mostSelected]["image"].'" />
+    <p class="resultDescription">'.$result[$mostSelected]["text"].'</p>
 </div>';
+
+require_once("includes/header.php");

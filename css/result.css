@@ -1,0 +1,20 @@
+.resultTitle {
+    font-size: 24px;
+    text-align: center;
+
+    width: 80%;
+    margin: 10px 0;
+}
+
+.resultImage {
+    max-width: 80%;
+    height: auto;
+    margin: 10px 0;
+}
+
+.resultDescription {
+    font-size: 18px;
+    text-align: center;
+
+    margin: 10px 0;
+}
