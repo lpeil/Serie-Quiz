@@ -16,15 +16,10 @@ $mostSelected = array_keys($sum, max($sum));
 $qtyMostSelected = count($mostSelected);
 
 if($qtyMostSelected > 1) {
-    for($i = 0; $i < $qtyMostSelected; $i++) {
-        if($_POST[4] == $mostSelected[$i]) {
-            $mostSelected = $mostSelected[$i];
-        } elseif($_POST[3] == $mostSelected[$i]) {
-            $selectAux = $mostSelected[$i];
-        }
-    }
-    if($mostSelected != $_POST[4]) {
-        $mostSelected = $selectAux;
+    if(in_array($_POST[4], $mostSelected)) {
+        $mostSelected = $_POST[4];
+    } else {
+        $mostSelected = $_POST[3];
     }
 } else {
     $mostSelected = $mostSelected[0];

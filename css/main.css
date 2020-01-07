@@ -10,6 +10,17 @@ html, body {
     margin: 5vh 0;
     color: #8300BA;
 }
+.siteCard {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+
+    width: 75vw;
+    padding: 25px 0;
+
+    background-color: #13051C;
+    color: #fff;
+}
 
 button {
     width: 200px;
@@ -22,4 +33,14 @@ button {
     
     color: #fff;
     font-size: 18px;
+}
+
+@media only screen and (max-width: 576px) {
+    .sitename {
+        margin: 2.5vh 0;
+    }
+    
+    .siteCard {
+      width: 95vw;
+    }
 }
