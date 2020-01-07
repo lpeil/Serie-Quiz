@@ -1,4 +1,10 @@
-<? require_once("includes/header.php"); ?>
+<?php 
+if($_GET["winner"]) {
+    require_once("share.php");
+}
+
+require_once("includes/header.php"); 
+?>
 
 <form class="siteCard" id="testForm" action="result.php" method="post">
     <? foreach($questions as $questionKey => $question) {
