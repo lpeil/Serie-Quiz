@@ -23,7 +23,7 @@ echo '<div class="siteCard">
     <img class="resultImage" src="'.$result[$mostSelected]["image"].'" />
     <p class="resultDescription">'.$result[$mostSelected]["text"].'</p>
     <div class="resultButtons">
-        <a href="index.php"><button class="backHome">Refazer o Teste</button></a>
+        <a href="questions.php"><button class="backHome">Refazer o Teste</button></a>
         <div class="shareButtons">
             <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://peil.dev/serieQuiz/?winner='.$mostSelected.'">
                 <button class="share facebook">Compartilhar</button>
