@@ -1,5 +1,5 @@
 <?php 
-if($_GET["winner"]) {
+if(isset($_GET["winner"])) {
     require_once("share.php");
 }
 
