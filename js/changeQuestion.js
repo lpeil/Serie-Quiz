@@ -17,7 +17,7 @@ function showQuestion() {
     if(currentQuestion == 0) {
         prevButton.style.display = "none"
     } else {
-        prevButton.style.display = "flex"
+        prevButton.style.display = "block"
     }
 
     if (currentQuestion == (questions.length - 1)) {
