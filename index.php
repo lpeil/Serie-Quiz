@@ -6,29 +6,13 @@ if(isset($_GET["winner"])) {
 require_once("includes/header.php"); 
 ?>
 
-<form class="siteCard" id="testForm" action="result.php" method="post">
-    <? foreach($questions as $questionKey => $question) {
-        shuffle($answers[$questionKey]);
-        echo '<div class="questionTab">
-        <div class="progressBar">
-            <div class="progress progress'.$questionKey.'"></div>
-        </div>
-            <h2 class="questionTitle">'.$question.'</h2>
-            <div class="answersContainer">';
-                foreach($answers[$questionKey] as $answer) {
-                    echo '<label class="answer">
-                        <input type="radio" value="'.$answer[0].'" name="'.$questionKey.'" />
-                        <span class="checkmark"></span>
-                        <span class="aswertText">'.$answer[1].'</span>
-                    </label>';
-                }
-        echo '</div>
-        </div>';
-    } ?>
-    <div class="buttons">
-        <button id="prevButton" type="button">Voltar</button>
-        <button id="nextButton" type="button">Avançar</button>
+<div class="siteCard indexCard">
+    <div class="indexFooter">
+        <span class="indexText">Qual série você seria?</span>
+        <a href="questions.php">
+            <button>Iniciar Quiz</button>
+        </a>
     </div>
-</form>
+</div>
 
 <? require_once("includes/footer.php"); ?>
