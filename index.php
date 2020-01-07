@@ -19,10 +19,10 @@
                     <h2 class="title">'.$question.'</h2>
                     <div class="answersContainer">';
                         shuffle($answers[$questionKey]);
-                        foreach($answers[$questionKey] as $answerKey => $answer) {
+                        foreach($answers[$questionKey] as $answer) {
                             echo '<label class="answer">
-                                <input type="radio" value="'.$answerKey.'" name="'.$questionKey.'" />
-                                <span class="aswertText">'.$answer.'</span>
+                                <input type="radio" value="'.$answer[0].'" name="'.$questionKey.'" />
+                                <span class="aswertText">'.$answer[1].'</span>
                             </label>';
                         }
                 echo '</div>
