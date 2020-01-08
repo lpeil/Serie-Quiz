@@ -26,5 +26,6 @@ require_once("includes/header.php");
         <button id="nextButton" type="button">Avançar</button>
     </div>
 </form>
+<script src="js/changeQuestion.js"></script>
 
 <? require_once("includes/footer.php"); ?>

@@ -85,6 +85,11 @@ button {
       width: 95vw;
     }
 
+    .indexCard {
+        height: 500px;
+        background-image: url("../images/startQuizMobile.png");
+    }
+
     .indexFooter button {
         margin: 10px 0;
     }
@@ -92,11 +97,5 @@ button {
     .indexText {
         font-size: 24px;
         margin: 10px 0;
-    }
-}
-
-@media only screen and (max-width: 750px) {
-    .indexCard {
-        height: 250px;
     }
 }
