@@ -1,43 +1,47 @@
--- phpMyAdmin SQL Dump
--- version 4.9.0.1
--- https://www.phpmyadmin.net/
---
--- Host: localhost
--- Tempo de geração: 08-Jan-2020 às 02:19
--- Versão do servidor: 10.3.16-MariaDB
--- versão do PHP: 7.3.8
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+CREATE DATABASE serieQuiz;
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+CREATE TABLE `questions` (
+  `id` int(11) NOT NULL,
+  `text` varchar(255) NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Banco de dados: `serieQuiz`
---
+INSERT INTO `questions` (`id`, `text`) VALUES
+(1, 'De manhã, você:'),
+(2, 'Indo para o trabalho você encontra uma senhora idosa caída na rua.'),
+(3, 'Chega no prédio e o elevador está cheio.'),
+(4, 'Você chega no trabalho e as convenções sociais te obrigam a puxar assunto.'),
+(5, 'A pauta pegou o dia todo, mas você está indo para casa.');
 
--- --------------------------------------------------------
+CREATE TABLE `series` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Estrutura da tabela `answers`
---
+INSERT INTO `series` (`id`, `title`, `description`, `image`) VALUES
+(1, 'House of Cards', 'Você é House of Cards: ataca o problema com método e faz de tudo para resolver a situação.', 'images/house.gif'),
+(2, 'Game of Thrones', 'Você é Game of Thrones: não tem muita delicadeza nas ações, mas resolve o problema de forma prática.', 'images/got.gif'),
+(3, 'Lost', 'Você é Lost: faz as coisas sem ter total certeza se é o caminho certo ou se faz sentido, mas no final dá tudo certo.', 'images/lost.gif'),
+(4, 'Breaking Bad', 'Você é Breaking Bad: pra fazer acontecer você toma a liderança, mas sempre contando com seus parceiros.', 'images/breakingbad.gif'),
+(5, 'Silicon Valley', 'Você é Silicon Valley: vive a tecnologia o tempo todo e faz disso um mantra para cada situação no dia.', 'images/valley.gif');
 
 CREATE TABLE `answers` (
   `id` int(11) NOT NULL,
   `question` int(11) NOT NULL,
   `serie` int(11) NOT NULL,
-  `text` varchar(255) NOT NULL
+  `text` varchar(255) NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (question) REFERENCES questions(id),
+  FOREIGN KEY (serie) REFERENCES series(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Extraindo dados da tabela `answers`
---
 
 INSERT INTO `answers` (`id`, `question`, `serie`, `text`) VALUES
 (1, 1, 1, 'Acorda cedo e come frutas cortadas metodicamente.'),
@@ -65,98 +69,3 @@ INSERT INTO `answers` (`id`, `question`, `serie`, `text`) VALUES
 (23, 5, 3, 'No ponto de ônibus mais uma vez, espero não errar a linha de novo.'),
 (24, 5, 4, 'Vou de carro, mas ofereço uma carona para os colegas.'),
 (25, 5, 5, 'Acho que descobri uma forma de fazer aquela senhora rodar no Firefox.');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `questions`
---
-
-CREATE TABLE `questions` (
-  `id` int(11) NOT NULL,
-  `text` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Extraindo dados da tabela `questions`
---
-
-INSERT INTO `questions` (`id`, `text`) VALUES
-(1, 'De manhã, você:'),
-(2, 'Indo para o trabalho você encontra uma senhora idosa caída na rua.'),
-(3, 'Chega no prédio e o elevador está cheio.'),
-(4, 'Você chega no trabalho e as convenções sociais te obrigam a puxar assunto.'),
-(5, 'A pauta pegou o dia todo, mas você está indo para casa.');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `series`
---
-
-CREATE TABLE `series` (
-  `id` int(11) NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `description` varchar(255) NOT NULL,
-  `image` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Extraindo dados da tabela `series`
---
-
-INSERT INTO `series` (`id`, `title`, `description`, `image`) VALUES
-(1, 'House of Cards', 'Você é House of Cards: ataca o problema com método e faz de tudo para resolver a situação.', 'images/house.gif'),
-(2, 'Game of Thrones', 'Você é Game of Thrones: não tem muita delicadeza nas ações, mas resolve o problema de forma prática.', 'images/got.gif'),
-(3, 'Lost', 'Você é Lost: faz as coisas sem ter total certeza se é o caminho certo ou se faz sentido, mas no final dá tudo certo.', 'images/lost.gif'),
-(4, 'Breaking Bad', 'Você é Breaking Bad: pra fazer acontecer você toma a liderança, mas sempre contando com seus parceiros.', 'images/breakingbad.gif'),
-(5, 'Silicon Valley', 'Você é Silicon Valley: vive a tecnologia o tempo todo e faz disso um mantra para cada situação no dia.', 'images/valley.gif');
-
---
--- Índices para tabelas despejadas
---
-
---
--- Índices para tabela `answers`
---
-ALTER TABLE `answers`
-  ADD PRIMARY KEY (`id`);
-
---
--- Índices para tabela `questions`
---
-ALTER TABLE `questions`
-  ADD PRIMARY KEY (`id`);
-
---
--- Índices para tabela `series`
---
-ALTER TABLE `series`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT de tabelas despejadas
---
-
---
--- AUTO_INCREMENT de tabela `answers`
---
-ALTER TABLE `answers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
-
---
--- AUTO_INCREMENT de tabela `questions`
---
-ALTER TABLE `questions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT de tabela `series`
---
-ALTER TABLE `series`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
