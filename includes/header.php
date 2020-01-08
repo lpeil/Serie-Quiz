@@ -1,11 +1,12 @@
 <? 
-    require_once('data/questions.php');
+    require_once('connection.php');
 ?>
 
 <html>
     <head>
         <title>Qual série você seria?</title>
         <!--METAS-->
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="keywords" content="serie, geek, web, teste, quiz">
         <meta name="language" content="PT-BR">

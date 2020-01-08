@@ -51,7 +51,7 @@ function prevQuestion() {
 }
 
 function validateForm() {
-    let checked = document.querySelector('input[name="'+ currentQuestion +'"]:checked');
+    let checked = document.querySelector('input[name="'+ (currentQuestion + 1) +'"]:checked');
 
     if(checked) {
         return true;

@@ -1,37 +1,41 @@
 <? require_once("includes/header.php");
 
-$sum = [0, 0, 0, 0, 0];
+$votes = array_count_values($_POST);
+$mostVoted = array_keys($votes, max($votes));
 
-for($i = 0; $i < count($_POST); $i++) {
-    $sum[$_POST[$i]]++;
-}
-
-$mostSelected = array_keys($sum, max($sum));
-
-if(count($mostSelected) > 1) {
-    if(in_array($_POST[4], $mostSelected)) {
-        $mostSelected = $_POST[4];
-    } else {
-        $mostSelected = $_POST[3];
+if(count($mostVoted) > 1) {
+    for($i = count($_POST); $i > 0; $i--) {
+        if(in_array($_POST[$i], $mostVoted)) {
+            $mostVoted = $_POST[$i];
+            break;
+        }
     }
 } else {
-    $mostSelected = $mostSelected[0];
+    $mostVoted = $mostVoted[0];
 }
 
+$sql = "SELECT * FROM `series` WHERE id = :id";
+
+$result = $pdo->prepare($sql);
+$result->bindValue(':id', $mostVoted, PDO::PARAM_INT);
+$result->execute();
+
+$serie = $result->fetch(PDO::FETCH_ASSOC);
+
 echo '<div class="siteCard">
-    <h1 class="resultTitle">'.$result[$mostSelected]["title"].'</h1>
-    <img class="resultImage" src="'.$result[$mostSelected]["image"].'" />
-    <p class="resultDescription">'.$result[$mostSelected]["text"].'</p>
+    <h1 class="resultTitle">'.$serie["title"].'</h1>
+    <img class="resultImage" src="'.$serie["image"].'" />
+    <p class="resultDescription">'.$serie["description"].'</p>
     <div class="resultButtons">
         <a href="questions.php"><button class="backHome">Refazer o Teste</button></a>
         <div class="shareButtons">
-            <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://peil.dev/serieQuiz/?winner='.$mostSelected.'">
+            <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://peil.dev/serieQuiz/?winner='.$serie["id"].'">
                 <button class="share facebook">Compartilhar</button>
             </a>
-            <a target="_blank" href="https://twitter.com/intent/tweet?text=https://peil.dev/serieQuiz/?winner='.$mostSelected.'">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=https://peil.dev/serieQuiz/?winner='.$serie["id"].'">
                 <button class="share twitter">Twittar</button>
             </a>
-            <a target="_blank" href="https://api.whatsapp.com/send?&text=https%3A%2F%2Fpeil.dev%2FserieQuiz%2F%3Fwinner%3D'.$mostSelected.'">
+            <a target="_blank" href="https://api.whatsapp.com/send?&text=https%3A%2F%2Fpeil.dev%2FserieQuiz%2F%3Fwinner%3D'.$serie["id"].'">
                 <button class="share whatsapp">Whatsapp</button>
             </a>
         </div>  
