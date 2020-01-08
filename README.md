@@ -1,5 +1,7 @@
 # Serie Quiz
 
+![Preview](https://i.imgur.com/vkRKQJK.png)
+
 ## Desafio
 
 Você foi contratado por um site de humor geek para programar um quiz que diz que série de TV você é baseado em como você age em algumas situações do dia-a-dia.
